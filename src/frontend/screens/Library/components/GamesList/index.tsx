@@ -115,7 +115,11 @@ const GamesList = ({
 
   return (
     <div
-      style={!library.length ? { backgroundColor: 'transparent' } : {}}
+      style={
+        !library.length
+          ? { backgroundColor: 'transparent', height: '1000px' }
+          : {}
+      }
       className={cx({
         gameList: layout === 'grid',
         gameListLayout: layout === 'list',

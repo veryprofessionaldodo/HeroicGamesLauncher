@@ -1,10 +1,13 @@
 .gameList {
   color: var(--text-secondary);
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(auto-fill, minmax(156px, 1fr));
   grid-gap: 1.5rem;
   padding: 0 var(--space-md-fixed) var(--space-3xl);
   margin: var(--space-md) 0;
+  height: 90vh;
+  overflow-y: auto;
 }
 
 .gameList.firstLane {
@@ -39,7 +42,7 @@
   justify-self: center;
 }
 
-.libraryHeader {
+/* .libraryHeader {
   text-align: start;
   padding: var(--space-md-fixed);
   margin: 0;
@@ -47,6 +50,14 @@
   position: sticky;
   top: var(--header-height, 82px);
   z-index: 9;
+} */
+
+.libraryHeader {
+  text-align: start;
+  padding: var(--space-md-fixed);
+  margin: 0;
+  background: var(--gradient-body-background, var(--body-background));
+  display: flex;
 }
 
 .libraryHeaderWrapper {
@@ -56,6 +67,7 @@
   grid-template-columns: max-content min-content;
   grid-template-areas: 'title action';
   justify-content: space-between;
+  width: 100%;
 }
 
 #backToTopArrow {

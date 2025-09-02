@@ -1,5 +1,6 @@
 export const initShortcuts = () => {
   document.addEventListener('keydown', (e) => {
+    console.log('KEYDOWN', e)
     // Ctrl+F or Cmd+F, focus search bar
     if ((e.ctrlKey || e.metaKey) && e.key.toLocaleLowerCase() === 'f') {
       document.getElementById('search')?.focus()

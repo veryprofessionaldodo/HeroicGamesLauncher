@@ -1,4 +1,4 @@
-.Header {
+/* .Header {
   position: sticky;
   top: 0;
   z-index: 10;
@@ -6,6 +6,15 @@
   grid-template-columns: 1fr min-content;
   grid-template-areas: 'search filters';
   grid-gap: 8px;
+  align-items: start;
+  padding: var(--space-md);
+  background: var(--gradient-body-background, var(--body-background));
+  color: var(--text-secondary);
+} */
+
+.Header {
+  display: flex;
+  justify-content: space-between;
   align-items: start;
   padding: var(--space-md);
   background: var(--gradient-body-background, var(--body-background));
@@ -31,7 +40,9 @@
 }
 
 .Header__search {
-  grid-area: search;
+  /* grid-area: search; */
+  display: flex;
+  flex-grow: 1;
   max-width: 700px;
 }
 

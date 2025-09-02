@@ -5,6 +5,7 @@ import { GameInfo, Runner } from 'common/types'
 import SearchBar from '../SearchBar'
 import { useTranslation } from 'react-i18next'
 import LibraryContext from 'frontend/screens/Library/LibraryContext'
+import './index.scss'
 
 function fixFilter(text: string) {
   const regex = new RegExp(/([?\\|*|+|(|)|[|]|])+/, 'g')
@@ -58,7 +59,7 @@ export default function LibrarySearchBar() {
   }
 
   return (
-    <div data-tour="library-search">
+    <div data-tour="library-search" className="librarySearch">
       <SearchBar
         suggestionsListItems={suggestions}
         onInputChanged={onInputChanged}

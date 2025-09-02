@@ -1105,6 +1105,8 @@ addHandler('gamepadAction', async (event, args) => {
     | Electron.KeyboardInputEvent
   )[] = []
 
+  console.log('action', action)
+
   /*
    * How to extend:
    *
