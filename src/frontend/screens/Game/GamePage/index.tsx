@@ -400,126 +400,128 @@ export default React.memo(function GamePage(): JSX.Element | null {
                       />
                     </div>
                   </div>
-                  <div className="mainInfoWrapper">
-                    <div className="mainInfo">
-                      <GamePicture
-                        art_square={art_cover}
-                        art_logo={art_logo}
-                        store={runner}
-                      />
-                      <div className="store-icon">
-                        <StoreLogos runner={runner} />
-                      </div>
-
-                      <h1 style={{ opacity: art_logo ? 0 : 1 }}>{title}</h1>
-                      <Genres
-                        genres={
-                          gameInfo.extra?.genres ||
-                          wikiInfo?.pcgamingwiki?.genres ||
-                          []
-                        }
-                      />
-                      <Developer gameInfo={gameInfo} />
-                      <ReleaseDate
-                        runnerDate={extraInfo?.releaseDate}
-                        date={wikiInfo?.pcgamingwiki?.releaseDate}
-                      />
-
-                      <Description />
-                      {!notInstallable && (
-                        <TimeContainer runner={runner} game={appName} />
-                      )}
-                      <GameStatus
-                        gameInfo={gameInfo}
-                        progress={progress}
-                        handleUpdate={handleUpdate}
-                        hasUpdate={hasUpdate}
-                      />
-                      <LaunchOptions
-                        gameInfo={gameInfo}
-                        setLaunchArguments={setLaunchArguments}
-                      />
-                      <div className="buttons">
-                        <MainButton
-                          gameInfo={gameInfo}
-                          handlePlay={handlePlay}
-                          handleInstall={handleInstall}
+                  <div className="mainContainer">
+                    <div className="mainInfoWrapper">
+                      <div className="mainInfo">
+                        <GamePicture
+                          art_square={art_cover}
+                          art_logo={art_logo}
+                          store={runner}
                         />
-                      </div>
-                      {wikiLink}
-                    </div>
-                  </div>
-                  <div className="extraInfoWrapper">
-                    <div className="extraInfo">
-                      <div className="extraInfoTabs">
-                        <Tabs
-                          className="gameInfoTabs"
-                          value={currentTab}
-                          onChange={(e, newVal) => setCurrentTab(newVal)}
-                          aria-label="gameinfo tabs"
-                          variant="scrollable"
-                        >
-                          <Tab
-                            className="tabButton"
-                            value={'info'}
-                            label={t('game.install_info', 'Install info')}
-                            iconPosition="start"
-                            icon={<Info className="gameInfoTabsIcon" />}
+                        <div className="store-icon">
+                          <StoreLogos runner={runner} />
+                        </div>
+
+                        <h1 style={{ opacity: art_logo ? 0 : 1 }}>{title}</h1>
+                        <Genres
+                          genres={
+                            gameInfo.extra?.genres ||
+                            wikiInfo?.pcgamingwiki?.genres ||
+                            []
+                          }
+                        />
+                        <Developer gameInfo={gameInfo} />
+                        <ReleaseDate
+                          runnerDate={extraInfo?.releaseDate}
+                          date={wikiInfo?.pcgamingwiki?.releaseDate}
+                        />
+
+                        <Description />
+                        {!notInstallable && (
+                          <TimeContainer runner={runner} game={appName} />
+                        )}
+                        <GameStatus
+                          gameInfo={gameInfo}
+                          progress={progress}
+                          handleUpdate={handleUpdate}
+                          hasUpdate={hasUpdate}
+                        />
+                        <LaunchOptions
+                          gameInfo={gameInfo}
+                          setLaunchArguments={setLaunchArguments}
+                        />
+                        <div className="buttons">
+                          <MainButton
+                            gameInfo={gameInfo}
+                            handlePlay={handlePlay}
+                            handleInstall={handleInstall}
                           />
-                          {hasWikiInfo && (
-                            <Tab
-                              className="tabButton"
-                              value={'extra'}
-                              label={t('game.extra_info', 'Extra info')}
-                              iconPosition="start"
-                              icon={<Star className="gameInfoTabsIcon" />}
-                            />
-                          )}
-                          {hasRequirements && (
-                            <Tab
-                              className="tabButton"
-                              value={'requirements'}
-                              label={t('game.requirements', 'Requirements')}
-                              iconPosition="start"
-                              icon={<Monitor className="gameInfoTabsIcon" />}
-                            />
-                          )}
-                        </Tabs>
-                      </div>
-
-                      <div>
-                        <TabPanel
-                          value={currentTab}
-                          index="info"
-                          className="infoTab"
-                        >
-                          <DownloadSizeInfo gameInfo={gameInfo} />
-                          <InstalledInfo gameInfo={gameInfo} />
-                          <CloudSavesSync gameInfo={gameInfo} />
-                        </TabPanel>
-
-                        <TabPanel
-                          value={currentTab}
-                          index="extra"
-                          className="extraTab"
-                        >
-                          <Scores gameInfo={gameInfo} />
-                          <HLTB />
-                          <CompatibilityInfo gameInfo={gameInfo} />
-                          <AppleWikiInfo gameInfo={gameInfo} />
-                        </TabPanel>
-
-                        <TabPanel
-                          className="tabPanelRequirements"
-                          value={currentTab}
-                          index="requirements"
-                        >
-                          <Requirements />
-                        </TabPanel>
+                        </div>
+                        {wikiLink}
                       </div>
                     </div>
+                    <div className="extraInfoWrapper">
+                      <div className="extraInfo">
+                        <div className="extraInfoTabs">
+                          <Tabs
+                            className="gameInfoTabs"
+                            value={currentTab}
+                            onChange={(e, newVal) => setCurrentTab(newVal)}
+                            aria-label="gameinfo tabs"
+                            variant="scrollable"
+                          >
+                            <Tab
+                              className="tabButton"
+                              value={'info'}
+                              label={t('game.install_info', 'Install info')}
+                              iconPosition="start"
+                              icon={<Info className="gameInfoTabsIcon" />}
+                            />
+                            {hasWikiInfo && (
+                              <Tab
+                                className="tabButton"
+                                value={'extra'}
+                                label={t('game.extra_info', 'Extra info')}
+                                iconPosition="start"
+                                icon={<Star className="gameInfoTabsIcon" />}
+                              />
+                            )}
+                            {hasRequirements && (
+                              <Tab
+                                className="tabButton"
+                                value={'requirements'}
+                                label={t('game.requirements', 'Requirements')}
+                                iconPosition="start"
+                                icon={<Monitor className="gameInfoTabsIcon" />}
+                              />
+                            )}
+                          </Tabs>
+                        </div>
 
-                    <Anticheat anticheatInfo={anticheatInfo} />
+                        <div>
+                          <TabPanel
+                            value={currentTab}
+                            index="info"
+                            className="infoTab"
+                          >
+                            <DownloadSizeInfo gameInfo={gameInfo} />
+                            <InstalledInfo gameInfo={gameInfo} />
+                            <CloudSavesSync gameInfo={gameInfo} />
+                          </TabPanel>
+
+                          <TabPanel
+                            value={currentTab}
+                            index="extra"
+                            className="extraTab"
+                          >
+                            <Scores gameInfo={gameInfo} />
+                            <HLTB />
+                            <CompatibilityInfo gameInfo={gameInfo} />
+                            <AppleWikiInfo gameInfo={gameInfo} />
+                          </TabPanel>
+
+                          <TabPanel
+                            className="tabPanelRequirements"
+                            value={currentTab}
+                            index="requirements"
+                          >
+                            <Requirements />
+                          </TabPanel>
+                        </div>
+                      </div>
+
+                      <Anticheat anticheatInfo={anticheatInfo} />
+                    </div>
                   </div>
                   <ReportIssue gameInfo={gameInfo} />
                 </>

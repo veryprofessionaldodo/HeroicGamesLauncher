@@ -1,21 +1,12 @@
 .gameConfigContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: min-content 1fr min-content;
+  display: flex;
+  flex-direction: column;
   padding: var(--space-md);
   gap: var(--space-md);
   border-radius: 10px;
   height: 100%;
-  max-width: 2400px;
-  grid-template-areas:
-    'header header'
-    'main extra'
-    'report report';
-
   overflow: hidden;
   justify-content: flex-start;
-  align-items: flex-start;
-  align-content: flex-start;
 
   /*
   ** Adding icons to the MUI tabs makes them at least 72px high
@@ -37,6 +28,13 @@
     background: none;
   }
 
+  .mainContainer {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: var(--space-md);
+  }
+
   .backButton {
     justify-self: flex-start;
     width: 44px;
@@ -45,7 +43,6 @@
     color: var(--status-default-hover);
     background-color: var(--navbar-background);
     border-radius: 10px;
-    display: grid;
     place-items: center;
     border: none;
 
@@ -61,7 +58,7 @@
 
   .topRowWrapper {
     display: flex;
-    grid-area: header;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     gap: auto;
@@ -80,7 +77,6 @@
 
   .topRowWapperInner {
     display: flex;
-    grid-area: header;
     gap: var(--space-sm);
     align-items: center;
     justify-content: flex-start;
@@ -93,23 +89,10 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    max-height: 1100px;
-    max-width: 1200px;
     overflow-y: auto;
     overflow-x: hidden;
     align-items: flex-start;
     justify-self: start;
-  }
-
-  .mainInfoWrapper {
-    grid-area: main;
-    container: main-info-wrapper / size;
-  }
-
-  .extraInfoWrapper {
-    grid-area: extra;
-    max-width: 850px;
-    gap: 1rem;
   }
 
   .mainInfo,
@@ -207,10 +190,11 @@
       }
 
       .summary {
-        overflow: auto;
+        overflow: hidden;
         font-size: var(--text-md);
         line-height: 1.5em;
         text-align: left;
+        flex-shrink: 1;
         flex-grow: 1;
         margin-top: var(--space-xs);
         color: var(--neutral-06);
@@ -444,7 +428,6 @@
 
   .reportProblem {
     display: flex;
-    grid-area: report;
 
     svg {
       margin-inline-end: 0.5rem;
@@ -477,7 +460,6 @@
     color: var(--navbar-inactive);
     background-color: var(--navbar-background);
     border-radius: 10px;
-    display: grid;
     place-items: center;
     height: 44px;
 
@@ -609,13 +591,6 @@
 @container main-content (max-width: 700px) {
   .gameConfigContainer {
     height: auto;
-    grid-template-columns: 1fr;
-    grid-template-rows: min-content 1fr 1fr min-content;
-    grid-template-areas:
-      'header'
-      'main'
-      'extra'
-      'report';
   }
 }
 
