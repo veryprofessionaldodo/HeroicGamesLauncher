@@ -458,7 +458,12 @@ export default React.memo(function GamePage(): JSX.Element | null {
                             value={'info'}
                             label={t('game.install_info', 'Install info')}
                             iconPosition="start"
-                            icon={<Info className="gameInfoTabsIcon" />}
+                            icon={
+                              <Info
+                                tabIndex={-1}
+                                className="gameInfoTabsIcon"
+                              />
+                            }
                           />
                           {hasWikiInfo && (
                             <Tab
@@ -466,7 +471,12 @@ export default React.memo(function GamePage(): JSX.Element | null {
                               value={'extra'}
                               label={t('game.extra_info', 'Extra info')}
                               iconPosition="start"
-                              icon={<Star className="gameInfoTabsIcon" />}
+                              icon={
+                                <Star
+                                  tabIndex={-1}
+                                  className="gameInfoTabsIcon"
+                                />
+                              }
                             />
                           )}
                           {hasRequirements && (
@@ -475,7 +485,12 @@ export default React.memo(function GamePage(): JSX.Element | null {
                               value={'requirements'}
                               label={t('game.requirements', 'Requirements')}
                               iconPosition="start"
-                              icon={<Monitor className="gameInfoTabsIcon" />}
+                              icon={
+                                <Monitor
+                                  tabIndex={-1}
+                                  className="gameInfoTabsIcon"
+                                />
+                              }
                             />
                           )}
                         </Tabs>

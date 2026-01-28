@@ -5,7 +5,7 @@ import './index.css'
 
 interface Props {
   htmlId: string
-  handleChange: ChangeEventHandler<HTMLInputElement>
+  handleChange?: ChangeEventHandler<HTMLInputElement>
   value: unknown
   title: string
   disabled?: boolean

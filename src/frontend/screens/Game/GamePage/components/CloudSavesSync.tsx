@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import GameContext from '../../GameContext'
 import { CloudOff, CloudQueue } from '@mui/icons-material'
@@ -155,23 +155,22 @@ const CloudSavesSync = ({ gameInfo }: Props) => {
             style={{
               color: autoSyncSaves ? '#07C5EF' : '',
               margin: 0,
-              cursor: 'pointer',
-              textDecoration: 'underline'
+              cursor: 'pointer'
             }}
+            onClick={handleOpen}
             className="iconWithText"
-            onMouseEnter={handleOpen}
             aria-owns={open ? 'mouse-over-popover' : undefined}
             aria-haspopup="true"
           >
-            <CloudQueue />
+            <CloudQueue tabIndex={-1} />
             {isSyncing ? (
               <b>{`${tCommon('setting.manualsync.syncing')}... ${tCommon(
                 'please-wait'
               )}`}</b>
             ) : (
               <>
-                <b>{t('info.syncsaves')}:</b>
-                {autoSyncSaves ? t('enabled') : t('disabled')}
+                <b>{`${t('info.syncsaves')}: ${autoSyncSaves ? t('enabled') : t('disabled')}`}</b>
+                {t('box.select.button')}
               </>
             )}
           </p>
@@ -186,12 +185,12 @@ const CloudSavesSync = ({ gameInfo }: Props) => {
               style: { pointerEvents: 'auto' }
             }}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left'
+              vertical: 'top',
+              horizontal: 'right'
             }}
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left'
+              vertical: 'bottom',
+              horizontal: 'right'
             }}
           >
             {syncCommands.map((command) => (
@@ -212,12 +211,14 @@ const CloudSavesSync = ({ gameInfo }: Props) => {
             >
               {t('open-saves-folder', 'Open Saves Folder')}
             </MenuItem>
-            <MenuItem style={{ paddingLeft: '4px' }}>
+            <MenuItem
+              onClick={() => setAutoSyncSaves(!autoSyncSaves)}
+              style={{ paddingLeft: '4px' }}
+            >
               <ToggleSwitch
                 title={tCommon('setting.autosync')}
                 htmlId="autosync"
                 value={autoSyncSaves}
-                handleChange={() => setAutoSyncSaves(!autoSyncSaves)}
               />
             </MenuItem>
           </Menu>
@@ -229,6 +230,7 @@ const CloudSavesSync = ({ gameInfo }: Props) => {
             color: '#F45460'
           }}
           className="iconWithText"
+          tabIndex={-1}
         >
           <CloudOff />
           <b>{t('info.syncsaves')}</b>
