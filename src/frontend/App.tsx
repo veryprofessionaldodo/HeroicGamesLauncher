@@ -178,7 +178,7 @@ const router = createHashRouter([
       },
       {
         path: 'console',
-        lazy: makeLazyFunc(import('./screens/ConsoleMode'))
+        lazy: makeLazyFunc(import('./screens/ConsoleMode/ConsoleGameList'))
       },
       {
         path: '*',
